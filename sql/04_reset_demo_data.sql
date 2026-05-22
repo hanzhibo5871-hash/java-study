@@ -1,0 +1,7 @@
+USE task_manager;
+
+DELETE FROM tasks;
+DELETE FROM users;
+
+ALTER TABLE tasks AUTO_INCREMENT = 1;
+ALTER TABLE users AUTO_INCREMENT = 1;

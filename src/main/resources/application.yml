@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: task-manager-api
+  datasource:
+    url: jdbc:mysql://localhost:3306/task_manager?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: auto
+
+app:
+  jwt:
+    # Learning-only default. Replace it before using this outside local practice.
+    secret: change-this-secret-to-at-least-32-characters
+    expiration-minutes: 120
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
