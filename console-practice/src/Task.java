@@ -1,10 +1,15 @@
 import java.time.LocalDate;
 
 public class Task {
+//    主键：唯一值
     private final int id;
+//    任务标题
     private String title;
+//    任务简介
     private String description;
+//    任务状态
     private TaskStatus status;
+//    截止时间
     private LocalDate dueDate;
 
     public Task(int id, String title, String description, LocalDate dueDate) {
