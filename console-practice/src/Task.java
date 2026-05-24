@@ -53,12 +53,9 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", status=" + status +
-                ", dueDate=" + dueDate +
-                '}';
+        return "任务编号："+getId() +
+                ",标题:"+getTitle()+
+                ",状态:"+getStatus()+
+                ",截止日期:"+getDueDate();
     }
 }
