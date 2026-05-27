@@ -22,6 +22,8 @@ public class TaskManagerConsoleApp {
                 case "2" -> listTasks();
                 case "3" -> updateTaskStatus();
                 case "4" -> deleteTask();
+                case "5" -> findTaskByInputId();
+                case "6" -> listTasksByStatus();
                 case "0" -> running = false;
                 default -> System.out.println("请输入菜单中的数字。");
             }
@@ -36,6 +38,8 @@ public class TaskManagerConsoleApp {
         System.out.println("2. 查看任务列表");
         System.out.println("3. 修改任务状态");
         System.out.println("4. 删除任务");
+        System.out.println("5.按任务筛选");
+        System.out.println("6. 按状态筛选");
         System.out.println("0. 退出");
         System.out.print("请选择：");
     }
@@ -106,5 +110,22 @@ public class TaskManagerConsoleApp {
         }
         System.out.println("没有找到这个任务。");
         return null;
+    }
+    private void  listTasksByStatus(){
+        System.out.println("请输入状态");
+        String StatusText = scanner.nextLine();
+        try {
+            TaskStatus status = TaskStatus.valueOf(StatusText);
+            boolean found = false;
+            for(Task task:tasks){
+                if(task.getStatus()==status){
+                    System.out.println(task);
+                    found = true;
+                }
+            }
+            if (found)
+        }catch (IllegalArgumentException exception){
+            System.out.println("状态只能是 TODO、DOING 或 DONE。");
+        }
     }
 }
