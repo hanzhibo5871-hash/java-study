@@ -137,8 +137,8 @@ public class TaskManagerConsoleApp {
 
     private void editTaskTitle(){
         System.out.println("请输入任务ID");
-        int taskId = Integer.parseInt( scanner.nextLine());
         try{
+            int taskId = Integer.parseInt( scanner.nextLine());
             boolean found = false;
             for(Task task:tasks){
                if(task.getId()==taskId ){
@@ -168,7 +168,7 @@ public class TaskManagerConsoleApp {
                 doingCount++;
             }
             if (task.getStatus()==TaskStatus.DONE){
-                todoCount++;
+                doneCount++;
             }
         }
         System.out.println("TODO:"+ todoCount);
