@@ -24,6 +24,8 @@ public class TaskManagerConsoleApp {
                 case "4" -> deleteTask();
                 case "5" -> findTaskByInputId();
                 case "6" -> listTasksByStatus();
+                case "7" -> editTaskTitle();
+                case "8" -> taskStatistics();
                 case "0" -> running = false;
                 default -> System.out.println("请输入菜单中的数字。");
             }
@@ -40,6 +42,8 @@ public class TaskManagerConsoleApp {
         System.out.println("4. 删除任务");
         System.out.println("5.按任务筛选");
         System.out.println("6. 按状态筛选");
+        System.out.println("7. 修改任务标题");
+        System.out.println("8. 查询任务状态统计");
         System.out.println("0. 退出");
         System.out.print("请选择：");
     }
@@ -123,9 +127,52 @@ public class TaskManagerConsoleApp {
                     found = true;
                 }
             }
-            if (found)
+            if (!found){
+                System.out.println("未找到对应状态的任务");
+            }
         }catch (IllegalArgumentException exception){
             System.out.println("状态只能是 TODO、DOING 或 DONE。");
         }
+    }
+
+    private void editTaskTitle(){
+        System.out.println("请输入任务ID");
+        int taskId = Integer.parseInt( scanner.nextLine());
+        try{
+            boolean found = false;
+            for(Task task:tasks){
+               if(task.getId()==taskId ){
+                   found = true;
+                   System.out.println("请输入新的标题");
+                   String newTitle = scanner.nextLine();
+                   task.setTitle(newTitle);
+                   System.out.println("修改成功,修改结果："+ task);
+               }
+            }
+           if(!found){
+               System.out.println("未找到对应的任务");
+           }
+        } catch (IllegalArgumentException exception) {
+            System.out.println("请输入ID编号为数字");
+        }
+    }
+    private void taskStatistics(){
+        int doingCount = 0;
+        int todoCount = 0;
+        int doneCount = 0;
+        for(Task task:tasks){
+            if (task.getStatus()==TaskStatus.TODO){
+                todoCount++;
+            }
+            if (task.getStatus()==TaskStatus.DOING){
+                doingCount++;
+            }
+            if (task.getStatus()==TaskStatus.DONE){
+                todoCount++;
+            }
+        }
+        System.out.println("TODO:"+ todoCount);
+        System.out.println("DOING:"+ doingCount);
+        System.out.println("DONE:"+ doneCount);
     }
 }
